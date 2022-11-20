@@ -7,4 +7,6 @@ from stripeApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('buy/<int:item_id>/', views.get_session_id),
+    path('item/<int:item_id>/', views.show_page)
+
 ]
