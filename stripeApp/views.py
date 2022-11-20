@@ -15,7 +15,7 @@ def create_session(request, item_id):
 
 
 @api_view()
-def show_page(request, item_id):
+def show_item_page(request, item_id):
     item = Item.objects.get(id=item_id)
     ctx = {
         'item_id': item_id,
