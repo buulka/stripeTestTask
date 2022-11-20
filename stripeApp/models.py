@@ -10,3 +10,14 @@ class Item(models.Model):
     class Meta:
         managed = True
         db_table = 'items'
+        verbose_name_plural = 'Товары'
+
+
+class Order(models.Model):
+    id = models.IntegerField(primary_key=True)
+    items = models.ManyToManyField(Item)
+
+    class Meta:
+        managed = True
+        db_table = 'orders'
+        verbose_name_plural = 'Заказы'
