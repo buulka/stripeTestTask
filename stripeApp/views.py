@@ -24,7 +24,7 @@ def show_order_page(request, order_id):
         'description': order_data['items'],
         'price': f'{order_data["price"] // 100}.{order_data["price"] % 100} руб.',
     }
-    return render(request, "test.html", context=ctx)
+    return render(request, "order.html", context=ctx)
 
 
 def get_order_data(order_id):
