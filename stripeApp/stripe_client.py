@@ -14,7 +14,6 @@ def create_session_api(order: dict) -> str | None:
             'currency': 'rub',
             'product_data': {
                 'name': f'Заказ № {order["id"]}',
-                'description': str(order["items"])
             },
             'unit_amount': order["num_price"],
         },
