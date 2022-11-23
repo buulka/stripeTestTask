@@ -20,6 +20,13 @@
 						{{ price }}
 					</p>
 				</div>
+                <div class="col-md-2">
+                    <p>
+                        {% if discount != Null %}
+                            + купон на скидку: {{ discount }}%
+                        {% endif %}
+                    </p>
+                </div>
 				<div class="col-md-2">
 
 					<button type="button" class="btn btn-success" id="buy-button">
@@ -36,7 +43,7 @@
     </script>
 
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-6">
 				</div>
 			</div>
 		</div>

@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Discount(models.Model):
-    id = models.IntegerField(primary_key=True)
+    coupon_id = models.CharField(primary_key=True, max_length=100)
     amount = models.IntegerField(blank=False, null=False)
 
     class Meta:
@@ -12,7 +12,7 @@ class Discount(models.Model):
 
 
 class Tax(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     amount = models.IntegerField(blank=False, null=False)
 
     class Meta:
@@ -22,7 +22,7 @@ class Tax(models.Model):
 
 
 class Item(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=250)
     description = models.TextField(blank=True, null=True, max_length=500)
     price = models.IntegerField()
@@ -34,13 +34,12 @@ class Item(models.Model):
 
 
 class Order(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     items = models.ManyToManyField(Item)
-    discount = models.ForeignKey(Discount, on_delete=models.SET_NULL, null=True)
-    tax = models.ForeignKey(Tax, on_delete=models.SET_NULL, null=True)
+    discount_coupon = models.ForeignKey(Discount, to_field="coupon_id", on_delete=models.SET_NULL, null=True, blank=True)
+    tax = models.ForeignKey(Tax, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         managed = True
         db_table = 'orders'
         verbose_name_plural = 'Заказы'
-
