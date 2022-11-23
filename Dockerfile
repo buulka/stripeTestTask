@@ -9,4 +9,5 @@ COPY requirements.txt ./
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 COPY . .
-ENTRYPOINT python manage.py runserver
+ENV DJANGO_SETTINGS_MODULE=stripeTestTask.settings
+ENTRYPOINT python manage.py makemigrations && python manage.py migrate && gunicorn --bind=:80 stripeTestTask.wsgi
