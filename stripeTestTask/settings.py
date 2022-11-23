@@ -11,6 +11,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,6 +77,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Stripe test admin page",
+    "site_header": "Stripe test",
+    "welcome_sign": "Welcome to the Stripe test",
+    "copyright": "Ekaterina Ivanova"
+}
 
 LANGUAGE_CODE = 'en-us'
 
