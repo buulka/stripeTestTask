@@ -10,6 +10,7 @@ urlpatterns = [
     path('order/<int:order_id>/', views.show_order_page),
     path('coupon/', views.create_coupon),
     path('payment_success/<int:order_id>', views.show_success_payment_page),
-    path('', views.show_order_list_page),
-    staticfiles_urlpatterns()
+    path('', views.show_order_list_page)
 ]
+
+urlpatterns += staticfiles_urlpatterns()
