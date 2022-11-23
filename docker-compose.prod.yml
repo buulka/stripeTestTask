@@ -6,7 +6,7 @@ services:
     pull_policy: always
     container_name: app
     ports:
-      - "80:8000"
+      - "80:80"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
