@@ -1,20 +1,19 @@
 import stripe
-from .models import Item
 from stripeTestTask import settings
 
 stripe.api_key = settings.STRIPE_KEY
 
 
-def create_session(item: Item) -> str:
+def create_session(order: dict) -> str:
     return stripe.checkout.Session.create(
         line_items=[{
             'price_data': {
                 'currency': 'rub',
                 'product_data': {
-                    'name': item.name,
-                    'description': item.description
+                    'name': f'Заказ № {order["id"]}',
+                    'description': str(order["items"])
                 },
-                'unit_amount': item.price,
+                'unit_amount': order["price"],
             },
             'quantity': 1,
         }],

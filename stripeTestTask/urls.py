@@ -5,6 +5,6 @@ from stripeApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('buy/<int:item_id>/', views.create_session),
-    path('item/<int:item_id>/', views.show_item_page)
+    path('buy/<int:order_id>/', views.create_session),
+    path('order/<int:order_id>/', views.show_order_page)
 ]
