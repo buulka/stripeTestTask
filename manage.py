@@ -1,11 +1,9 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+import logging.handlers
 import os
 import sys
 
 
 def main():
-    """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stripeTestTask.settings')
     try:
         from django.core.management import execute_from_command_line
@@ -19,4 +17,13 @@ def main():
 
 
 if __name__ == '__main__':
+    os.makedirs('logs', exist_ok=True)
+    rotating_handler = logging.handlers.RotatingFileHandler('logs/stripe_app.log',
+                                                            backupCount=5,
+                                                            maxBytes=512 * 1024)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(lineno)d - %(message)s')
+    rotating_handler.setFormatter(formatter)
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(name)s - %(lineno)d - %(message)s')
+    logging.getLogger('').addHandler(rotating_handler)
+
     main()

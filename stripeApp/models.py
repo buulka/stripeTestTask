@@ -4,21 +4,12 @@ from django.db import models
 class Discount(models.Model):
     coupon_id = models.CharField(primary_key=True, max_length=100)
     amount = models.IntegerField(blank=False, null=False)
+    output_amount = models.CharField(blank=False, null=False, max_length=100)
 
     class Meta:
         managed = True
         db_table = 'discounts'
         verbose_name_plural = 'Скидки'
-
-
-class Tax(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    amount = models.IntegerField(blank=False, null=False)
-
-    class Meta:
-        managed = True
-        db_table = 'taxes'
-        verbose_name_plural = 'Налоги'
 
 
 class Item(models.Model):
@@ -37,7 +28,6 @@ class Order(models.Model):
     id = models.BigAutoField(primary_key=True)
     items = models.ManyToManyField(Item)
     discount_coupon = models.ForeignKey(Discount, to_field="coupon_id", on_delete=models.SET_NULL, null=True, blank=True)
-    tax = models.ForeignKey(Tax, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         managed = True
