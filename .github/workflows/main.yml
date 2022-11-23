@@ -13,6 +13,6 @@ jobs:
       - name: Docker login
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login --username ${{ github.actor }} --password-stdin ghcr.io
       - name: Build container
-        run: docker build -t ghcr.io/buulka/stripeTestTask:latest .
+        run: docker build -t ghcr.io/buulka/stripe_test_task:latest .
       - name: Push container
-        run: docker push ghcr.io/buulka/stripeTestTask:latest
+        run: docker push ghcr.io/buulka/stripe_test_task:latest
