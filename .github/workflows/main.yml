@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Docker login
-        run: echo "$GITHUB_TOKEN" | docker login --username "$GITHUB_ACTOR" --password-stdin
+        run: docker login --username "$GITHUB_ACTOR" --password "$GITHUB_TOKEN"
       - name: Build container
         run: docker build -t ghcr.io/buulka/stripeTestTask:latest .
       - name: Push container
