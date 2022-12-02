@@ -21,8 +21,8 @@ def create_session_api(order: dict) -> str | None:
         'quantity': 1,
     }]
     mode = 'payment'
-    success_url = f'https://{os.environ.get("HOST")}/payment_success/{order["id"]}'
-    cancel_url = f'https://{os.environ.get("HOST")}/'
+    success_url = f'http://{os.environ.get("HOST")}/payment_success/{order["id"]}'
+    cancel_url = f'http://{os.environ.get("HOST")}/'
 
     try:
         if order["coupon_id"] is not None:
