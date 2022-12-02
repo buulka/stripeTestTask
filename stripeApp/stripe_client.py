@@ -1,4 +1,5 @@
 import logging
+import os
 
 import stripe
 
@@ -20,8 +21,8 @@ def create_session_api(order: dict) -> str | None:
         'quantity': 1,
     }]
     mode = 'payment'
-    success_url = f'/payment_success/{order["id"]}'
-    cancel_url = f'/'
+    success_url = f'https://{os.environ.get("HOST")}/payment_success/{order["id"]}'
+    cancel_url = f'https://{os.environ.get("HOST")}/'
 
     try:
         if order["coupon_id"] is not None:

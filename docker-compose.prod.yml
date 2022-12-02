@@ -11,6 +11,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
       - POSTGRES_HOST=postgres
+      - HOST=84.46.240.20
       - STRIPE_KEY=sk_test_51M5dVjB8COH5NDNLlPPOQciEFiLBEZ1k1hks1nHPhWjHMUMkqB346nQpgtNDX015K5e1fZ7fI9MjntVYBLAROxRO00xKW4TX7j
     depends_on:
       - db
