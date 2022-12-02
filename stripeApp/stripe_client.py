@@ -21,7 +21,7 @@ def create_session_api(order: dict) -> str | None:
     }]
     mode = 'payment'
     success_url = f'/payment_success/{order["id"]}'
-    cancel_url = f''
+    cancel_url = f'/'
 
     try:
         if order["coupon_id"] is not None:
